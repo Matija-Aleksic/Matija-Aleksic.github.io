@@ -1,12 +1,16 @@
 body {
     display: flex;
     margin: 0;
-    font-family: Arial, sans-serif;
     background-color: black;
-    background-image: url('images/background.jpg');
+    background-image: url('images/backgrounds/background.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    font-family: 'SourceSansPro', sans-serif;
+}
+
+body.artistBody {
+    background-image: url('images/backgrounds/background2.jpeg') !important;
 }
 
 .menu {
@@ -17,20 +21,23 @@ body {
 }
 .menu img {
     width: 100px;
-    margin-bottom: 50px;
+    margin-bottom: 10vh;
 }
 
 .menu a {
     display: block;
     color: white;
-    padding: 15px;
+    padding: 30px;
     text-decoration: none;
-    font-family: 'oswald_regularregular', sans-serif;
+    font-family: 'Oswald';
+    font-size: x-large;
 }
 
 .menu a:hover {
-    background-color: #575757;
-    transform: scale(1.1);
+    background-blend-mode: lighten;
+    color: #39ff14;
+    margin-left: 10px;
+    transform: scale(1.6);
 }
 
 .content {
@@ -40,194 +47,177 @@ body {
 }
 
 p {
-    font-family: 'source_sans_prolight', sans-serif;
+    font-family: 'SourceSansPro', sans-serif;
+    line-height: 1.5em;
 }
 
-h1 {
-    font-family: 'oswalddemi-bold', sans-serif;
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Oswald', sans-serif;
 }
 
 .naslovna {
-    font-family: 'oswalddemi-bold', sans-serif;
-    color: #39ff14;
-    font-size: 31vh;
+    font-family: 'Oswald', sans-serif;
+    font-size: 30vh;
+    font-weight: bolder;
     margin: 0;
-    margin-left: 30vw;
-    margin-top: 6vh;
+    margin-left: 27%;
+    line-height: 1;
+    background: linear-gradient(to bottom, #39ff14, #FF14BC);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.artist-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin: 10%;
+    margin-right: 0;
+}
+
+.artist-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
+    width: 200px;
+    padding: 15px;
+    transition: transform 0.5s ease-in-out;
+    transition: background-color 0.5s ease-in-out;
+
 }
 
+.artist-card a {
+    text-decoration: none;
+    color: black;
+    display: block;
+}
+
+.artist-card:hover {
+    transform: scale(1.1);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgb(0, 0, 0);
+        background-color: #FF14BC;
+}
+
+.artist-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.artist-card h3 {
+    margin: 10px 0 5px;
+    font-size: 18px;
+}
+
+.artist-card p {
+    font-size: 14px;
+    color: #666;
+}
 
 @font-face {
-    font-family: 'source_sans_probold';
-    src: url('fonts/sansPro/sourcesanspro-bold-webfont.woff') format('woff2'),
-        url('fonts/sansPro/sourcesanspro-bold-webfont.woff') format('woff');
+    font-family: 'SourceSansPro';
+    src: url('fonts/SourceSansPro-Regular.woff2') format('woff2'),
+         url('fonts/SourceSansPro-Regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-
 }
 
-
-
-
 @font-face {
-    font-family: 'source_sans_probold_italic';
-    src: url('fonts/sansPro/sourcesanspro-boldit-webfont.woff2') format('woff2'),
-        url('fonts/sansPro/sourcesanspro-boldit-webfont.woff') format('woff');
+    font-family: 'Oswald';
+    src: url('fonts/oswald/oswald-regular-webfont.woff2') format('woff2'),
+         url('fonts/oswald/oswald-regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-
 }
-
-
-
-
 @font-face {
-    font-family: 'source_sans_prolight';
-    src: url('fonts/sansPro/sourcesanspro-light-webfont.woff2') format('woff2'),
-        url('fonts/sansPro/sourcesanspro-light-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-
-
-
-@font-face {
-    font-family: 'source_sans_prolight_italic';
-    src: url('fonts/sansPro/sourcesanspro-lightit-webfont.woff2') format('woff2'),
-        url('fonts/sansPro/sourcesanspro-lightit-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'oswald_regularregular';
-    src: url('oswald-regular-webfont.woff2') format('woff2'),
-        url('oswald-regular-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-
-
-
-@font-face {
-    font-family: 'oswaldbold';
-    src: url('fonts/oswald/oswald-bolditalic-webfont.woff2') format('woff2'),
-        url('fonts/oswald/oswald-bolditalic-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-
-
-
-@font-face {
-    font-family: 'oswalddemibold';
-    src: url('fonts/oswald/oswald-demibold-webfont.woff2') format('woff2'),
-        url('fonts/oswald/oswald-demibold-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-
-
-
-@font-face {
-    font-family: 'oswalddemi-bold';
-    src: url('fonts/oswald/oswald-demi-bolditalic-webfont.woff2') format('woff2'),
-        url('fonts/oswald/oswald-demi-bolditalic-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-
-
-
-@font-face {
-    font-family: 'oswaldextralight';
+    font-family: 'Oswald';
     src: url('fonts/oswald/oswald-extralight-webfont.woff2') format('woff2'),
         url('fonts/oswald/oswald-extralight-webfont.woff') format('woff');
-    font-weight: normal;
+    font-weight: 200;
     font-style: normal;
-
 }
 
-
-
-
 @font-face {
-    font-family: 'oswaldextra-light';
+    font-family: 'Oswald';
     src: url('fonts/oswald/oswald-extra-lightitalic-webfont.woff2') format('woff2'),
         url('fonts/oswald/oswald-extra-lightitalic-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
+    font-weight: 200;
+    font-style: italic;
 }
 
-
-
-
 @font-face {
-    font-family: 'oswaldheavy';
-    src: url('fonts/oswald/oswald-heavy-webfont.woff2') format('woff2'),
-        url('fonts/oswald/oswald-heavy-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-
-
-
-@font-face {
-    font-family: 'oswaldheavy';
-    src: url('fonts/oswald/oswald-heavyitalic-webfont.woff2') format('woff2'),
-        url('fonts/oswald/oswald-heavyitalic-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-
-
-
-@font-face {
-    font-family: 'oswaldlight';
+    font-family: 'Oswald';
     src: url('fonts/oswald/oswald-light-webfont.woff2') format('woff2'),
         url('fonts/oswald/oswald-light-webfont.woff') format('woff');
-    font-weight: normal;
+    font-weight: 300;
     font-style: normal;
-
 }
 
-
-
-
 @font-face {
-    font-family: 'oswaldlight';
+    font-family: 'Oswald';
     src: url('fonts/oswald/oswald-lightitalic-webfont.woff2') format('woff2'),
         url('fonts/oswald/oswald-lightitalic-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
+    font-weight: 300;
+    font-style: italic;
 }
 
-
-
+@font-face {
+    font-family: 'Oswald';
+    src: url('fonts/oswald/oswald-regular-webfont.woff2') format('woff2'),
+        url('fonts/oswald/oswald-regular-webfont.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
 
 @font-face {
-    font-family: 'oswaldmedium';
+    font-family: 'Oswald';
     src: url('fonts/oswald/oswald-medium-webfont.woff2') format('woff2'),
         url('fonts/oswald/oswald-medium-webfont.woff') format('woff');
-    font-weight: normal;
+    font-weight: 500;
     font-style: normal;
+}
 
+@font-face {
+    font-family: 'Oswald';
+    src: url('fonts/oswald/oswald-semibold-webfont.woff2') format('woff2'),
+        url('fonts/oswald/oswald-semibold-webfont.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Oswald';
+    src: url('fonts/oswald/oswald-bold-webfont.woff2') format('woff2'),
+        url('fonts/oswald/oswald-bold-webfont.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Oswald';
+    src: url('fonts/oswald/oswald-bolditalic-webfont.woff2') format('woff2'),
+        url('fonts/oswald/oswald-bolditalic-webfont.woff') format('woff');
+    font-weight: 700;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Oswald';
+    src: url('fonts/oswald/oswald-heavy-webfont.woff2') format('woff2'),
+        url('fonts/oswald/oswald-heavy-webfont.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Oswald';
+    src: url('fonts/oswald/oswald-heavyitalic-webfont.woff2') format('woff2'),
+        url('fonts/oswald/oswald-heavyitalic-webfont.woff') format('woff');
+    font-weight: 900;
+    font-style: italic;
 }
