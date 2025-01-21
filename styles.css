@@ -9,8 +9,11 @@ body {
     font-family: 'SourceSansPro', sans-serif;
 }
 
-body.artistBody {
+body.artistsBody {
     background-image: url('images/backgrounds/background2.jpeg') !important;
+}
+body.artistBody {
+    background-image: none;
 }
 
 .menu {
@@ -56,7 +59,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .naslovna {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Oswald';
     font-size: 30vh;
     font-weight: bolder;
     margin: 0;
@@ -119,6 +122,220 @@ h1, h2, h3, h4, h5, h6 {
     color: #666;
 }
 
+.spotlight {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    color: white;
+    margin-left: 10%;
+    margin-top: 5vh;
+}
+.spotlight img {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    margin-right: 20px;
+}
+.spotlight div {
+    max-width: 600px;
+}
+.spotlight h1 {
+    font-family: 'oswald';
+    font-size: 2.5em;
+    margin: 0;
+}
+.spotlight p {
+    font-size: 1.1em;
+    line-height: 1.5em;
+}
+.social-icons {
+    font-family: 'oswald';
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a {
+    color: #39ff14;
+    text-decoration: none;
+    font-size: 40px;  /* Adjust icon size */
+    position: relative;
+    padding: 5px;
+    transition: all 0.2s ease-out;
+}
+
+.social-icons a:after {
+    content: " ";
+    width: 100%;
+    height: 1px;
+    background: #39ff14;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    transition: all 0.2s ease-out;
+}
+
+.social-icons a:before {
+    content: " ";
+    width: 4px;
+    height: 4px;
+    background: #39ff14;
+    position: absolute;
+    right: -4px;
+    bottom: 0;
+    opacity: 0;
+}
+
+.social-icons a:hover {
+    background: #52804A;
+    transition: all 0.1s ease-out;
+    padding: 5px 10px;
+}
+
+.social-icons a:hover:after {
+    width: 0px;
+    transition: all 0.1s ease-out;
+}
+
+.social-icons a:hover:before {
+    opacity: 1;
+    animation: blink 0.4s infinite 0.1s;
+    transition: all 0.1s ease-out;
+}
+
+.social-icons a:visited {
+    color: #AA468E;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.events {
+    padding: 20px;
+    background-color: #fff;
+    margin: 20px;
+}
+
+.contact-container {
+    font-family: 'oswald';
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+    margin: 10% auto;
+}
+
+.contact-container h2 {
+    margin-bottom: 15px;
+    color: #39ff14;
+    font-family: 'Oswald', sans-serif;
+}
+
+.contact-info p {
+    margin: 10px 0;
+}
+
+.contact-info a {
+    color: #39ff14;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease-in-out;
+}
+
+.contact-info a:hover {
+    color: #FF14BC;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    background: white;
+    color: black;
+}
+
+.contact-form button {
+    background-color: #39ff14;
+    color: black;
+    padding: 10px;
+    border: none;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.contact-form button:hover {
+    background-color: #FF14BC;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .menu {
+        width: 100%;
+        height: auto;
+        position: relative;
+        text-align: center;
+        padding-top: 10px;
+    }
+
+    .menu img {
+        width: 60px;
+        margin-bottom: 10px;
+    }
+
+    .menu a {
+        padding: 15px;
+        font-size: medium;
+    }
+
+    .content {
+        margin-left: 0;
+        padding: 15px;
+    }
+
+    .naslovna {
+        font-size: 8vw;
+        margin-left: 0;
+    }
+
+    .artist-container {
+        margin: 5%;
+    }
+
+    .spotlight {
+        margin-left: 0;
+    }
+
+    .social-icons a {
+        font-size: 24px;
+    }
+
+    .contact-container {
+        width: 95%;
+    }
+}
 @font-face {
     font-family: 'SourceSansPro';
     src: url('fonts/SourceSansPro-Regular.woff2') format('woff2'),

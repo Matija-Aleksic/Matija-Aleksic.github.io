@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function validateForm(event) {
+            event.preventDefault();
+            let isValid = true;
+            const name = document.forms["contactForm"]["name"];
+            const email = document.forms["contactForm"]["email"];
+            const subject = document.forms["contactForm"]["subject"];
+            const message = document.forms["contactForm"]["message"];
+            
+            document.querySelectorAll(".error").forEach(e => e.style.display = "none");
+            
+            if (name.value.trim() === "") {
+                document.getElementById("nameError").style.display = "block";
+                isValid = false;
+            }
+            if (email.value.trim() === "" || !email.value.includes("@")) {
+                document.getElementById("emailError").style.display = "block";
+                isValid = false;
+            }
+            if (subject.value.trim() === "") {
+                document.getElementById("subjectError").style.display = "block";
+                isValid = false;
+            }
+            if (message.value.trim() === "") {
+                document.getElementById("messageError").style.display = "block";
+                isValid = false;
+            }
+            if (isValid) {
+                alert("Form submitted successfully!");
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="contact-container">
+        <h2>Contact Us</h2>
+        <div class="contact-info">
+            <p><i class="fas fa-envelope"></i> <a href="mailto:info@example.com">info@example.com</a> <i class="fas fa-phone"></i> <a href="tel:+123456789">+123 456 789</a></p>
+        </div>
+        <form name="contactForm" class="contact-form" onsubmit="validateForm(event)">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <span class="error" id="nameError">Please enter your name.</span>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <span class="error" id="emailError">Please enter a valid email.</span>
+            <input type="text" name="subject" placeholder="Subject" required>
+            <span class="error" id="subjectError">Please enter a subject.</span>
+            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+            <span class="error" id="messageError">Please enter a message.</span>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+</body>
+</html>
