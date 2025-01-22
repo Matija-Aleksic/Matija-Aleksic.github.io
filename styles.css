@@ -14,7 +14,7 @@ body.artistsBody {
 }
 
 body.artistBody {
-    background-image: none;
+    background-image: url('images/backgrounds/background4.jpg') !important;
 }
 
 body.eventBody {
@@ -149,7 +149,7 @@ h6 {
 
 
 .artist-card {
-    background: white;
+    background: antiquewhite;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -170,7 +170,7 @@ h6 {
     transform: scale(1.1);
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: rgb(0, 0, 0);
-    background-color: #FF14BC;
+    background: linear-gradient(to bottom, #39ff14, #FF14BC);
 }
 
 .artist-card img {
@@ -233,7 +233,6 @@ h6 {
     color: #39ff14;
     text-decoration: none;
     font-size: 40px;
-    /* Adjust icon size */
     position: relative;
     padding: 5px;
     transition: all 0.2s ease-out;
@@ -337,7 +336,7 @@ h6 {
 
 .contact-form input,
 .contact-form textarea {
-    width: 95%;
+    width: 94%;
     padding: 10px;
     margin: 5px 0;
     border: none;
@@ -390,7 +389,7 @@ h6 {
 }
 
 .schedule-day h3 {
-    background-color: #444;
+    background-color: #AA468E;
     color: white;
     padding: 10px;
     font-size: 24px;
