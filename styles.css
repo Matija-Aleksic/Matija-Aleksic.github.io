@@ -88,6 +88,8 @@ color: #39ff14;
     font-size: 10em;
 }
 
+
+
 .mobile-nav a:hover {
     background-blend-mode: lighten;
     color: #39ff14;
@@ -132,6 +134,10 @@ h6 {
     justify-content: center;
     margin: 10%;
     margin-right: 0;
+}
+
+.artist-container.close {
+    display: none;
 }
 
 .artist-card {
@@ -379,11 +385,11 @@ h6 {
 
     img.mobLogo {
         display: block;
-        width: 20%;
+        height: 8em;
     }
 
     .menu img {
-        width: 60px;
+        width: 5em;
         display: none;
         margin-bottom: 10px;
     }
@@ -417,6 +423,8 @@ h6 {
 
     .spotlight {
         margin-left: 0;
+        display: flex;
+        flex-direction: column;
     }
 
     .social-icons a {
@@ -424,7 +432,7 @@ h6 {
     }
 
     .contact-container {
-        width: 95%;
+        width: 90%;
     }
 }
 
