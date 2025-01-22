@@ -17,6 +17,11 @@ body.artistBody {
     background-image: none;
 }
 
+body.eventBody {
+    flex-direction: column;
+    background-image: url('images/backgrounds/background3.jpg') !important;
+}
+
 img.mobLogo {
     display: none;
 }
@@ -54,14 +59,14 @@ img.mobLogo {
 }
 
 .hamburger-btn {
-color: #39ff14;
-  font-size: 60px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  position: absolute;
-  top: 1vh;
-  right: 1vw;
+    color: #39ff14;
+    font-size: 60px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 1vh;
+    right: 1vw;
 }
 
 .mobile-nav {
@@ -79,7 +84,8 @@ color: #39ff14;
     padding: 10px;
     text-decoration: none;
     font-family: 'Oswald';
-    font-size: 10vh;}
+    font-size: 10vh;
+}
 
 .mobile-nav.open {
     margin-top: 10vh;
@@ -112,7 +118,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Oswald';
 }
 
 .naslovna {
@@ -139,6 +145,7 @@ h6 {
 .artist-container.close {
     display: none;
 }
+
 
 .artist-card {
     background: white;
@@ -329,7 +336,7 @@ h6 {
 
 .contact-form input,
 .contact-form textarea {
-    width: 100%;
+    width: 95%;
     padding: 10px;
     margin: 5px 0;
     border: none;
@@ -361,19 +368,79 @@ h6 {
     display: none;
 }
 
+.event-schedule {
+    margin: 30px auto;
+    width: 90%;
+    max-width: 800px;
+    text-align: left;
+}
+
+.event-schedule.close {
+    display: none;
+}
+
+.event-schedule h2 {
+    font-size: 28px;
+    text-align: center;
+}
+
+.schedule-day {
+    margin-bottom: 30px;
+}
+
+.schedule-day h3 {
+    background-color: #444;
+    color: white;
+    padding: 10px;
+    font-size: 24px;
+    text-align: center;
+}
+
+.event-card {
+    display: flex;
+    background: white;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px 0;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.event-card img {
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.event-info {
+    flex-grow: 1;
+}
+
+.event-info h4 {
+    font-size: 20px;
+    margin: 5px 0;
+}
+
+.map {
+    width: 90%;
+    max-width: 800px;
+    height: 300px;
+    border: 0;
+}
+
 @media screen and (max-width: 768px) {
     body {
         display: block;
         background-image: url('images/backgrounds/background.jpg');
         background-size: auto;
         background-position: top;
-        background-repeat: no-repeat;
+        background-repeat: repeat;
         font-family: 'SourceSansPro', sans-serif;
     }
 
-.naslovna {
-    display: none;
-}
+    .naslovna {
+        display: none;
+    }
 
     .menu {
         width: 100%;
@@ -425,6 +492,9 @@ h6 {
         margin-left: 0;
         display: flex;
         flex-direction: column;
+    }
+    .spotlight.close{
+        display: none;
     }
 
     .social-icons a {
