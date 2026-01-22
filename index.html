@@ -4,32 +4,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Symphonic Music</title>
+    <title>Graffiti Festival</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('.menu');
+            menu.classList.toggle('menu-open');
+        }
+
+        function initImageLoading() {
+            const images = document.querySelectorAll('img[loading="lazy"]');
+            images.forEach(img => {
+                img.setAttribute('data-skeleton', '');
+                img.addEventListener('load', () => {
+                    img.removeAttribute('data-skeleton');
+                });
+                img.addEventListener('error', () => {
+                    img.removeAttribute('data-skeleton');
+                });
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', initImageLoading);
+    </script>
 </head>
 
 <body>
-    <a href="index.html"><img class="mobLogo" src="images/logo1.png" alt=""></a>
-    <a href="qr.html"><img class="logo" src="images/logo1.png" alt=""></a>
+    <a href="qr.html"><img class="logo" src="resources/icons/logo_outlined_spray.webp" alt=""></a>
+
+
+    <button class="hamburger-menu" onclick="toggleMenu()" aria-label="Toggle Menu">
+        <i class="fas fa-bars"></i>
+    </button>
 
     <nav class="menu">
-        <a href="artists.html">Artists</a>
-        <a href="event.html">Program</a>
-        <a href="form.html">Contact</a>
+        <a class="marker-link" href="artists.html">Artists</a>
+        <a class="marker-link" href="program.html">Program</a>
+        <a class="marker-link" href="form.html">Contact</a>
     </nav>
 
-    <div class="hamburger-menu">
-        <button class="hamburger-btn">☰</button>
-        <div class="mobile-nav">
-            <a href="artists.html">Artists</a>
-            <a href="event.html">Program</a>
-            <a href="form.html">Contact</a>
-        </div>
-    </div>
-
-    <h1 class="naslovna">Festival Novog Zvuka</h1>
-    <div class="content"></div>
+    <img loading="lazy" class="landingImg" src="resources/img/ohoho.webp"
+        srcset="resources/img/ohoho.webp 480w, resources/img/ohoho.webp 1024w, resources/img/ohoho.webp 1440w"
+        sizes="(max-width:600px) 100vw, (max-width:1024px) 100vw, 85vw" alt="Graffiti Art">
 </body>
 
 </html>

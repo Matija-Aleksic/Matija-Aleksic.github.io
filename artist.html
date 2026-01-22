@@ -1,77 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artist Spotlight</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <title>Artist Profile | Vandal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
-
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('.menu');
+            menu.classList.toggle('menu-open');
+        }
+        
+        function initImageLoading() {
+            const images = document.querySelectorAll('img[loading="lazy"]');
+            images.forEach(img => {
+                img.setAttribute('data-skeleton', '');
+                img.addEventListener('load', () => {
+                    img.removeAttribute('data-skeleton');
+                });
+                img.addEventListener('error', () => {
+                    img.removeAttribute('data-skeleton');
+                });
+            });
+        }
+        
+        document.addEventListener('DOMContentLoaded', initImageLoading);
+    </script>
 </head>
+<body>
+    <img class="logo" src="resources/icons/logo_outlined_spray.webp" alt="Logo">
 
-<body class="artistBody">
+    <button class="hamburger-menu" onclick="toggleMenu()" aria-label="Toggle Menu">
+        <i class="fas fa-bars"></i>
+    </button>
 
-    <a href="index.html"><img class="mobLogo" src="images/logo1.png" alt=""></a>
-    <a href="qr.html"><img class="logo" src="images/logo1.png" alt=""></a>
     <nav class="menu">
-        <a href="index.html">Home</a>
-        <a href="artists.html">Artists</a>
-        <a href="event.html">Program</a>
-        <a href="form.html">Contact</a>
+        <a class="marker-link" href="index.html">Home</a>
+        <a class="marker-link" href="artists.html">Artists</a>
+        <a class="marker-link" href="program.html">Program</a>
+        <a class="marker-link" href="form.html">Contact</a>
     </nav>
 
-    <div class="hamburger-menu">
-        <button class="hamburger-btn">☰</button>
-        <div class="mobile-nav">
-            <a href="index.html">Home</a>
-            <a href="artists.html">Artists</a>
-            <a href="event.html">Progrm</a>
-            <a href="form.html">Contact</a>
-        </div>
-    </div>
-
-    <section class="artist-spotlight">
-        <div class="flex-column"> <img src="images/artists/2" alt="Artist's Image">
-
-            <div class="social-icons">
-
-                <a href="https://www.artistwebsite.com" target="_blank">Official Website</a>
-                <br>
-
+    <main class="artist-profile-container container">
+        <section class="artist-header">
+            <img loading="lazy" src="resources/img/artists/band1.webp" srcset="resources/img/artists/band1.webp 400w, resources/img/artists/band1.webp 800w" sizes="(max-width:600px) 90vw, (max-width:1024px) 60vw, 350px" alt="Vandal" class="profile-pic">
+            
+            <div class="artist-bio">
+                <h1>VANDAL</h1>
+                <p>Born in the tunnels of Berlin and raised on the rooftops of New York, Vandal brings a raw, aggressive energy to the canvas. His work is a collision of traditional wildstyle graffiti and modern digital glitch art. He believes that every wall has a story that can only be told through a spray can.</p>
+                
+                <div class="artist-socials">
+                    <a href="#"><i class="fab fa-instagram"></i> @vandal_art</a>
+                    <a href="#"><i class="fab fa-twitter"></i> @vandal_paints</a>
+                </div>
             </div>
-            <div class="social-icons">
+        </section>
 
-                <a href="https://www.facebook.com/" target="_blank">
-                    <i class="fab fa-facebook"></i>
-                </a>
-                <a href="https://twitter.com/" target="_blank">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="https://www.instagram.com/" target="_blank">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://www.youtube.com/" target="_blank">
-                    <i class="fab fa-youtube"></i>
-                </a>
+        <section class="gallery-section">
+            <h2>PIECE GALLERY</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item tall">
+                    <a class="gallery-link" href="resources/img/artists/alp-ancel-WKQt_X-SKFI-unsplash.webp" target="_blank" aria-label="Open image"></a>
+                    <img loading="lazy" src="resources/img/artists/alp-ancel-WKQt_X-SKFI-unsplash.webp" srcset="resources/img/artists/alp-ancel-WKQt_X-SKFI-unsplash.webp 320w, resources/img/artists/alp-ancel-WKQt_X-SKFI-unsplash.webp 768w, resources/img/artists/alp-ancel-WKQt_X-SKFI-unsplash.webp 1200w" sizes="(max-width:600px) 90vw, (max-width:1024px) 45vw, 350px" alt="Graffiti Work">
+                </div>
+                <div class="gallery-item wide">
+                    <a class="gallery-link" href="resources/img/artists/andreas-fickl-o1xcUi-Yt_w-unsplash.webp" target="_blank" aria-label="Open image"></a>
+                    <img loading="lazy" src="resources/img/artists/andreas-fickl-o1xcUi-Yt_w-unsplash.webp" srcset="resources/img/artists/andreas-fickl-o1xcUi-Yt_w-unsplash.webp 320w, resources/img/artists/andreas-fickl-o1xcUi-Yt_w-unsplash.webp 768w, resources/img/artists/andreas-fickl-o1xcUi-Yt_w-unsplash.webp 1200w" sizes="(max-width:600px) 90vw, (max-width:1024px) 90vw, 700px" alt="Graffiti Work">
+                </div>
+                <div class="gallery-item">
+                    <a class="gallery-link" href="resources/img/artists/bend2.webp" target="_blank" aria-label="Open image"></a>
+                    <img loading="lazy" src="resources/img/artists/bend2.webp" srcset="resources/img/artists/bend2.webp 320w, resources/img/artists/bend2.webp 768w, resources/img/artists/bend2.webp 1200w" sizes="(max-width:600px) 90vw, (max-width:1024px) 45vw, 350px" alt="Graffiti Work">
+                </div>
+                <div class="gallery-item">
+                    <a class="gallery-link" href="resources/img/artists/bend3.webp" target="_blank" aria-label="Open image"></a>
+                    <img loading="lazy" src="resources/img/artists/bend3.webp" srcset="resources/img/artists/bend3.webp 320w, resources/img/artists/bend3.webp 768w, resources/img/artists/bend3.webp 1200w" sizes="(max-width:600px) 90vw, (max-width:1024px) 45vw, 350px" alt="Graffiti Work">
+                </div>
+                <div class="gallery-item tall">
+                    <a class="gallery-link" href="resources/img/artists/bp-miller-Xeif8SdEgRU-unsplash.webp" target="_blank" aria-label="Open image"></a>
+                    <img loading="lazy" src="resources/img/artists/bp-miller-Xeif8SdEgRU-unsplash.webp" srcset="resources/img/artists/bp-miller-Xeif8SdEgRU-unsplash.webp 320w, resources/img/artists/bp-miller-Xeif8SdEgRU-unsplash.webp 768w, resources/img/artists/bp-miller-Xeif8SdEgRU-unsplash.webp 1200w" sizes="(max-width:600px) 90vw, (max-width:1024px) 45vw, 350px" alt="Graffiti Work">
+                </div>
+                <div class="gallery-item">
+                    <a class="gallery-link" href="resources/img/artists/hin-bong-yeung-jF946mh5QrA-unsplash.webp" target="_blank" aria-label="Open image"></a>
+                    <img loading="lazy" src="resources/img/artists/hin-bong-yeung-jF946mh5QrA-unsplash.webp" srcset="resources/img/artists/hin-bong-yeung-jF946mh5QrA-unsplash.webp 320w, resources/img/artists/hin-bong-yeung-jF946mh5QrA-unsplash.webp 768w, resources/img/artists/hin-bong-yeung-jF946mh5QrA-unsplash.webp 1200w" sizes="(max-width:600px) 90vw, (max-width:1024px) 45vw, 350px" alt="Graffiti Work">
+                </div>
+                <div class="gallery-item wide">
+                    <a class="gallery-link" href="resources/img/artists/mateo-krossler-KsOWP1sH6W4-unsplash.webp" target="_blank" aria-label="Open image"></a>
+                    <img loading="lazy" src="resources/img/artists/mateo-krossler-KsOWP1sH6W4-unsplash.webp" srcset="resources/img/artists/mateo-krossler-KsOWP1sH6W4-unsplash.webp 320w, resources/img/artists/mateo-krossler-KsOWP1sH6W4-unsplash.webp 768w, resources/img/artists/mateo-krossler-KsOWP1sH6W4-unsplash.webp 1200w" sizes="(max-width:600px) 90vw, (max-width:1024px) 90vw, 700px" alt="Graffiti Work">
+                </div>
+                <div class="gallery-item">
+                    <a class="gallery-link" href="resources/img/artists/max-van-den-oetelaar-uymG7UVPXpI-unsplash.webp" target="_blank" aria-label="Open image"></a>
+                    <img loading="lazy" src="resources/img/artists/max-van-den-oetelaar-uymG7UVPXpI-unsplash.webp" srcset="resources/img/artists/max-van-den-oetelaar-uymG7UVPXpI-unsplash.webp 320w, resources/img/artists/max-van-den-oetelaar-uymG7UVPXpI-unsplash.webp 768w, resources/img/artists/max-van-den-oetelaar-uymG7UVPXpI-unsplash.webp 1200w" sizes="(max-width:600px) 90vw, (max-width:1024px) 45vw, 350px" alt="Graffiti Work">
+                </div>
+                <div class="gallery-item tall">
+                    <a class="gallery-link" href="resources/img/artists/paolo-nicolello-9CoL-pdhPWM-unsplash.webp" target="_blank" aria-label="Open image"></a>
+                    <img loading="lazy" src="resources/img/artists/paolo-nicolello-9CoL-pdhPWM-unsplash.webp" srcset="resources/img/artists/paolo-nicolello-9CoL-pdhPWM-unsplash.webp 320w, resources/img/artists/paolo-nicolello-9CoL-pdhPWM-unsplash.webp 768w, resources/img/artists/paolo-nicolello-9CoL-pdhPWM-unsplash.webp 1200w" sizes="(max-width:600px) 90vw, (max-width:1024px) 45vw, 350px" alt="Graffiti Work">
+                </div>
+                <div class="gallery-item">
+                    <a class="gallery-link" href="resources/img/artists/pawel-czerwinski-XyDUj57VzFM-unsplash.webp" target="_blank" aria-label="Open image"></a>
+                    <img loading="lazy" src="resources/img/artists/pawel-czerwinski-XyDUj57VzFM-unsplash.webp" srcset="resources/img/artists/pawel-czerwinski-XyDUj57VzFM-unsplash.webp 320w, resources/img/artists/pawel-czerwinski-XyDUj57VzFM-unsplash.webp 768w, resources/img/artists/pawel-czerwinski-XyDUj57VzFM-unsplash.webp 1200w" sizes="(max-width:600px) 90vw, (max-width:1024px) 45vw, 350px" alt="Graffiti Work">
+                </div>
+                <div class="gallery-item wide">
+                    <a class="gallery-link" href="resources/img/artists/red-mirror-f303VzauP6w-unsplash.webp" target="_blank" aria-label="Open image"></a>
+                    <img loading="lazy" src="resources/img/artists/red-mirror-f303VzauP6w-unsplash.webp" srcset="resources/img/artists/red-mirror-f303VzauP6w-unsplash.webp 320w, resources/img/artists/red-mirror-f303VzauP6w-unsplash.webp 768w, resources/img/artists/red-mirror-f303VzauP6w-unsplash.webp 1200w" sizes="(max-width:600px) 90vw, (max-width:1024px) 90vw, 700px" alt="Graffiti Work">
+                </div>
+                <div class="gallery-item">
+                    <a class="gallery-link" href="resources/img/artists/rick.webp" target="_blank" aria-label="Open image"></a>
+                    <img loading="lazy" src="resources/img/artists/rick.webp" srcset="resources/img/artists/rick.webp 320w, resources/img/artists/rick.webp 768w, resources/img/artists/rick.webp 1200w" sizes="(max-width:600px) 90vw, (max-width:1024px) 45vw, 350px" alt="Graffiti Work">
+                </div>
             </div>
-        </div>
-
-        <div class="flex-column">            <h1>Artist Name</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vestibulum, dolor quis eleifend tempus, ipsum
-                tellus condimentum dui, sed vehicula diam arcu commodo ante. Proin fringilla imperdiet urna molestie
-                aliquet. Donec volutpat turpis diam, eget tempor tellus convallis et. Donec malesuada lectus vitae
-                rhoncus pharetra. Integer eu nunc sapien. Etiam gravida libero sed massa lacinia, et congue magna
-                auctor. Fusce elit dolor, scelerisque egestas ultricies ut, finibus interdum felis. Curabitur venenatis
-                nisi id placerat volutpat. Nulla mattis auctor mi. Sed ut massa sagittis, faucibus libero vitae,
-                lobortis ipsum. Morbi sit amet urna pretium, eleifend nulla sit amet, rutrum nunc. Donec consectetur
-                rutrum sapien, quis fermentum justo consequat a. Aliquam hendrerit efficitur ullamcorper. Duis in purus
-                et metus hendrerit elementum quis in felis. Sed at enim accumsan, pharetra risus et, mattis nulla.
-                Nullam posuere aliquet orci, eget molestie massa tincidunt id. .</p></div>
-
-        </div>
-    </section>
+        </section>
+    </main>
 </body>
-
 </html>

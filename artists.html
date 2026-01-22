@@ -4,80 +4,244 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Symphonic Music</title>
+    <title>Artists | Graffiti Fest</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const cards = document.querySelectorAll('.artist-card');
+            let activeCard = null;
+
+            function applyTilt(card, clientX, clientY) {
+                const rect = card.getBoundingClientRect();
+
+                const x = clientX - rect.left;
+                const y = clientY - rect.top;
+
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const rotateX = ((y - centerY) / centerY) * -8;
+                const rotateY = ((x - centerX) / centerX) * 8;
+
+                card.style.transform =
+                    `perspective(900px)
+             rotateX(${rotateX}deg)
+             rotateY(${rotateY}deg)
+             translateY(-6px)
+             scale(1.02)`;
+
+                card.style.setProperty('--spray-x', `${x}px`);
+                card.style.setProperty('--spray-y', `${y}px`);
+
+                const shine = card.querySelector('.card-shine');
+                if (shine) {
+                    shine.style.background =
+                        `radial-gradient(circle at ${x}px ${y}px,
+                rgba(255,255,255,0.12),
+                transparent 50%)`;
+                }
+            }
+
+            function resetTilt(card) {
+                if (!card) return;
+                card.style.transform =
+                    'perspective(900px) rotateX(0deg) rotateY(0deg) translateY(0) scale(1)';
+            }
+
+            function findCardFromPoint(x, y) {
+                const elements = document.elementsFromPoint(x, y);
+                for (const el of elements) {
+                    const card = el.closest('.artist-card');
+                    if (card) return card;
+                }
+                return null;
+            }
+
+            function onPointerMove(e) {
+                const x = e.clientX;
+                const y = e.clientY;
+
+                if (x == null || y == null) return;
+
+                const card = findCardFromPoint(x, y);
+
+                if (!card) {
+                    if (activeCard) {
+                        resetTilt(activeCard);
+                        activeCard = null;
+                    }
+                    return;
+                }
+
+                if (activeCard && activeCard !== card) {
+                    resetTilt(activeCard);
+                }
+
+                activeCard = card;
+                applyTilt(card, x, y);
+            }
+
+            document.addEventListener('pointermove', onPointerMove);
+
+            document.addEventListener('pointerleave', () => {
+                if (activeCard) {
+                    resetTilt(activeCard);
+                    activeCard = null;
+                }
+            });
+
+            window.addEventListener('blur', () => {
+                if (activeCard) {
+                    resetTilt(activeCard);
+                    activeCard = null;
+                }
+            });
+
+        });
+    </script>
+
 </head>
 
-<body class="artistsBody">
-    <video autoplay muted loop id="bg-video">
-        <source src="images/Star-Explosion-Retro-Futurism-Loop-2024-09-23-00-36-23-Utc.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-    <a href="index.html"><img class="mobLogo" src="images/logo1.png" alt=""></a>
-    <a href="index.html"><img class="logo" src="images/logo1.png" alt=""></a>
+<body>
+    <img class="logo" src="resources/icons/logo_outlined_spray.webp" alt="Logo">
+
+    <button class="hamburger-menu" onclick="toggleMenu()" aria-label="Toggle Menu">
+        <i class="fas fa-bars"></i>
+    </button>
+
     <nav class="menu">
-        <a href="index.html">Home</a>
-        <a href="event.html">Program</a>
-        <a href="form.html">Contact</a>
+        <a class="marker-link" href="index.html">Home</a>
+        <a class="marker-link" href="program.html">Program</a>
+        <a class="marker-link" href="form.html">Contact</a>
     </nav>
 
-    <div class="hamburger-menu">
-        <button class="hamburger-btn">☰</button>
-        <div class="mobile-nav">
-            <a href="index.html">Home</a>
-            <a href="event.html">Program</a>
-            <a href="form.html">Contact</a>
-        </div>
-    </div>
-    <div class="video-background-container">
-        <section>
-            <div class="spotlight">
-                <a href="artist.html">
-                    <h1 class="link">Slayer</h1>
-                </a>                <div>
-
-                    <img src="images/artists/band1.jpg" alt="">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vestibulum, dolor quis eleifend
-                        tempus, ipsum
-                        tellus condimentum dui, sed vehicula diam arcu commodo ante. Proin fringilla imperdiet urna
-                        molestie
-                        aliquet. Donec volutpat turpis diam, eget
-                    </p>
-                </div>
+    <main class="artists-grid container">
+        <article class="artist-card">
+            <a class="card-link-overlay" href="artist.html" aria-label="Open artist profile"></a>
+            <img loading="lazy" src="resources/img/artists/band1.webp"
+                srcset="resources/img/artists/band1.webp 320w, resources/img/artists/band1.webp 768w, resources/img/artists/band1.webp 1024w"
+                sizes="(max-width:600px) 100vw, (max-width:1024px) 50vw, 33vw" alt="Artist One">
+            <h2>Vandal</h2>
+            <p>Specializing in large-scale murals and wildstyle lettering, Vandal has been a staple in the underground
+                scene for over a decade. His work blends neon aesthetics with gritty textures.</p>
+            <div class="artist-socials">
+                <a href="artist.html"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
             </div>
-            <div class="spotlight">
-                <a href="artist.html">
-                    <h1 class="link">Mac Miller</h1>
-                </a>
-                <div>
+        </article>
 
-                    <img src="images/artists/bend3.jpg" alt="">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vestibulum, dolor quis eleifend
-                        tempus, ipsum
-                        tellus condimentum dui, sed vehicula diam arcu commodo ante. Proin fringilla imperdiet urna
-                        molestie
-                        aliquet. Donec volutpat turpis diam, eget
-                    </p>
-                </div>
+        <article class="artist-card">
+            <a class="card-link-overlay" href="artist.html" aria-label="Open artist profile"></a>
+            <img loading="lazy" src="resources/img/artists/bend2.webp"
+                srcset="resources/img/artists/bend2.webp 320w, resources/img/artists/bend2.webp 768w, resources/img/artists/bend2.webp 1024w"
+                sizes="(max-width:600px) 100vw, (max-width:1024px) 50vw, 33vw" alt="Artist Two">
+            <h2>Ghost</h2>
+            <p>Known for his monochromatic characters and elusive street pieces. Ghost focuses on the interaction
+                between urban decay and modern illustrative clean lines.</p>
+            <div class="artist-socials">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-behance"></i></a>
             </div>
-            <div class="spotlight">
-                <a href="artist.html">
-                    <h1 class="link">MF DOOM</h1>
-                </a>
-                <div>
+        </article>
 
-                    <img src="images/artists/rick.jpg" alt="">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vestibulum, dolor quis eleifend
-                        tempus, ipsum
-                        tellus condimentum dui, sed vehicula diam arcu commodo ante. Proin fringilla imperdiet urna
-                        molestie
-                        aliquet. Donec volutpat turpis diam, eget
-                    </p>
-                </div>
+        <article class="artist-card">
+            <a class="card-link-overlay" href="artist.html" aria-label="Open artist profile"></a>
+            <img loading="lazy" src="resources/img/artists/bend3.webp"
+                srcset="resources/img/artists/bend3.webp 320w, resources/img/artists/bend3.webp 768w, resources/img/artists/bend3.webp 1024w"
+                sizes="(max-width:600px) 100vw, (max-width:1024px) 50vw, 33vw" alt="Artist Three">
+            <h2>Pink Ink</h2>
+            <p>A pioneer of the spray-paint stenciling technique. Her work often features social commentary hidden
+                behind bright, explosive bursts of color and geometric patterns.</p>
+            <div class="artist-socials">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
             </div>
-        </section>
+        </article>
+        <article class="artist-card">
+            <a class="card-link-overlay" href="artist.html" aria-label="Open artist profile"></a>
+            <img loading="lazy" src="resources/img/artists/band1.webp"
+                srcset="resources/img/artists/band1.webp 320w, resources/img/artists/band1.webp 768w, resources/img/artists/band1.webp 1024w"
+                sizes="(max-width:600px) 100vw, (max-width:1024px) 50vw, 33vw" alt="Artist One">
+            <h2>Vandal</h2>
+            <p>Specializing in large-scale murals and wildstyle lettering, Vandal has been a staple in the underground
+                scene for over a decade. His work blends neon aesthetics with gritty textures.</p>
+            <div class="artist-socials">
+                <a href="artist.html"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </article>
+
+        <article class="artist-card">
+            <a class="card-link-overlay" href="artist.html" aria-label="Open artist profile"></a>
+            <img loading="lazy" src="resources/img/artists/bend2.webp"
+                srcset="resources/img/artists/bend2.webp 320w, resources/img/artists/bend2.webp 768w, resources/img/artists/bend2.webp 1024w"
+                sizes="(max-width:600px) 100vw, (max-width:1024px) 50vw, 33vw" alt="Artist Two">
+            <h2>Ghost</h2>
+            <p>Known for his monochromatic characters and elusive street pieces. Ghost focuses on the interaction
+                between urban decay and modern illustrative clean lines.</p>
+            <div class="artist-socials">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-behance"></i></a>
+            </div>
+        </article>
+
+        <article class="artist-card">
+            <a class="card-link-overlay" href="artist.html" aria-label="Open artist profile"></a>
+            <img loading="lazy" src="resources/img/artists/bend3.webp"
+                srcset="resources/img/artists/bend3.webp 320w, resources/img/artists/bend3.webp 768w, resources/img/artists/bend3.webp 1024w"
+                sizes="(max-width:600px) 100vw, (max-width:1024px) 50vw, 33vw" alt="Artist Three">
+            <h2>Pink Ink</h2>
+            <p>A pioneer of the spray-paint stenciling technique. Her work often features social commentary hidden
+                behind bright, explosive bursts of color and geometric patterns.</p>
+            <div class="artist-socials">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </article>
+        <article class="artist-card">
+            <a class="card-link-overlay" href="artist.html" aria-label="Open artist profile"></a>
+            <img loading="lazy" src="resources/img/artists/band1.webp"
+                srcset="resources/img/artists/band1.webp 320w, resources/img/artists/band1.webp 768w, resources/img/artists/band1.webp 1024w"
+                sizes="(max-width:600px) 100vw, (max-width:1024px) 50vw, 33vw" alt="Artist One">
+            <h2>Vandal</h2>
+            <p>Specializing in large-scale murals and wildstyle lettering, Vandal has been a staple in the underground
+                scene for over a decade. His work blends neon aesthetics with gritty textures.</p>
+            <div class="artist-socials">
+                <a href="artist.html"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </article>
+
+        <article class="artist-card">
+            <a class="card-link-overlay" href="artist.html" aria-label="Open artist profile"></a>
+            <img loading="lazy" src="resources/img/artists/bend2.webp"
+                srcset="resources/img/artists/bend2.webp 320w, resources/img/artists/bend2.webp 768w, resources/img/artists/bend2.webp 1024w"
+                sizes="(max-width:600px) 100vw, (max-width:1024px) 50vw, 33vw" alt="Artist Two">
+            <h2>Ghost</h2>
+            <p>Known for his monochromatic characters and elusive street pieces. Ghost focuses on the interaction
+                between urban decay and modern illustrative clean lines.</p>
+            <div class="artist-socials">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-behance"></i></a>
+            </div>
+        </article>
+
+        <article class="artist-card">
+            <a class="card-link-overlay" href="artist.html" aria-label="Open artist profile"></a>
+            <img loading="lazy" src="resources/img/artists/bend3.webp"
+                srcset="resources/img/artists/bend3.webp 320w, resources/img/artists/bend3.webp 768w, resources/img/artists/bend3.webp 1024w"
+                sizes="(max-width:600px) 100vw, (max-width:1024px) 50vw, 33vw" alt="Artist Three">
+            <h2>Pink Ink</h2>
+            <p>A pioneer of the spray-paint stenciling technique. Her work often features social commentary hidden
+                behind bright, explosive bursts of color and geometric patterns.</p>
+            <div class="artist-socials">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </article>
+    </main>
 </body>
+
+</html>
