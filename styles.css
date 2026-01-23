@@ -401,10 +401,7 @@ p, li { font-size: clamp(1rem, 1.2vw, 1.125rem); line-height: 1.7; }
     outline-offset: 3px;
 }
 
-@media (prefers-reduced-motion: reduce) {
-    * { animation: none !important; transition: none !important; }
-    .artist-card { transform: none !important; }
-}
+
 
 @keyframes skeleton-shimmer {
     0% { background-position: -1200px 0; }
